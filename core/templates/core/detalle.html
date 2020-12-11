@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+  imagenes del vehiculo
+{% endblock title %}
+<style>
+img{  
+  display:flex;
+  margin:0 auto;
+}
+    </style>
+    {% block hero %}
+   
+
+
+    {% if detalle %}
+    <div class="container col-7 my-4 p-4">
+    
+    <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+      <ol class="carousel-indicators">
+        {% for d in detalle %}
+      <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.counter0 == 0 %} active {% endif %}"></li>
+    {% endfor %}
+    </ol>
+
+    <div class="carousel-inner" role="listbox">
+      {% for d in detalle %}
+      <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+        <img class="d-block w-100" src="{{d.imgsdetalle.url}}"
+          alt="First slide" style="width: 200px; height: 500px;">
+      </div>
+      {% endfor %}
+      <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      <!--/.Controls-->
+      
+    </div>
+
+      
+    </div>
+    <br>
+    <div>
+        <a href="{% url 'home' %}" class="btn btn-primary btn-md">Volver</a>
+      </div>
+    </div>
+{% else %}
+<h1>no hay nada</h1>
+    {% endif %}
+     {% endblock hero %}
+
+     {% block content %}
+     {% endblock content %}

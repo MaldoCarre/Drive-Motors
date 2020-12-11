@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% csrf_token %}
+{% block title %}
+Drive-Motors La Rioja
+{% endblock title %}
+
+
+{% block content %}
+    
+      {% csrf_token %}
+   {% if autos %}
+   <div class="container ">
+   <br>
+   <div class="row col-12">
+    <div class=" section-title">
+      <h2>Marca</h2>
+      <p>Ford</p>
+    </div>
+   </div>
+   <div class="row row-cols-3 row-cols-md-3">
+    
+    {% for a in autos %}
+    {% if a.usado == False %}
+    <div class="col mb-2">
+      <div class="card">
+        <div class="view overlay">
+          <img class="card-img-top img-fluid" src="{{a.imagenes.url}}" alt="" style="height: 200px;">
+          <a href="#!">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">{{a.marca}} {{a.modelo}}</h4>
+          <p class="card-text">{{a.precio}}</p>
+          <p class="card-text">{{a.usado}}</p>
+          <a href="{% url 'detalle' a.id %}" class="btn btn-primary btn-md" >Ver mas fotos</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+   {% endif %}
+   {% endblock content %}

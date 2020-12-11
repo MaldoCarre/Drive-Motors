@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nueva Carga de fotos Prueba</title>
+</head>
+<body>
+    <form action="/nuevacarga" method="POST" enctype="multipart/form-data" >
+      {% csrf_token %}
+      <h5>Marca</h5>
+      <input type="text" name="marca">
+      <h5>Modelo</h5>
+      <input type="text" name="modelo">
+      <h5>Motor</h5>
+      <input type="text" name="motor">
+      <h5>Color</h5>
+      <input type="text" name="color">
+      <h5>Año</h5>
+      <input type="text" name="año">
+      <h5>Precio</h5>
+      <input type="text" name="precio">
+      <h5>kilometros</h5>
+      <input type="text" name="kilometros">
+      <h5>usado</h5>
+      <select name =usado>
+        <option selected>Nuevo/Usado</option>
+        <option value="False">Nuevo</option>
+        <option value="True">Usado</option>
+      </select>
+      <input type="radio" name="usado" id="">
+      <h5>Imagenes principal</h5>
+      <input type="file" name="imagenes" id="">
+      <h5>Imagenes del auto</h5>
+      <input type="file" name="imgsdetalle[]" id="" multiple>
+
+      <button type="submit">Cargar</button>
+
+    </form>
+</body>
+</html>
